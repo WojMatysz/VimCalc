@@ -6,11 +6,15 @@ Ncurses::Ncurses()
 	noecho();
 	cbreak();
 	keypad(stdscr, TRUE);
-	getch();
 }
 
 
 Ncurses::~Ncurses()
 {
 	endwin();
+}
+
+int Ncurses::getInput()
+{
+	return getch();
 }

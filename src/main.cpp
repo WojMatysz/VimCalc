@@ -1,11 +1,12 @@
-#include <iostream>
-
-#include "ncurses.hpp"
+#include "core/core.hpp"
+#include "tui/tui.hpp"
+#include "interface/coreUiControler.hpp"
 
 int main(int argc, char * argv[])
 {
-
-	Ncurses ncurses;
-	std::cout << "Ncurses initialized\n";
+	core::Core core;
+	tui::Tui tui;
+	interface::CoreUiControler coreTuiControler{&core, &tui};
+	tui.run();
 	return 0;
 };

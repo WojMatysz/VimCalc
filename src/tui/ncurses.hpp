@@ -7,4 +7,5 @@ class Ncurses
 public:
 	Ncurses();
 	~Ncurses();
+	int getInput();
 };
