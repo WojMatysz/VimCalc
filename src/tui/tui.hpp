@@ -3,6 +3,7 @@
 #include "ncurses.hpp"
 
 #include "../interface/ui.hpp"
+#include "window.hpp"
 
 namespace tui
 {
@@ -10,9 +11,12 @@ namespace tui
 		:public interface::Ui
 	{
 	public:
-		Tui() {};
+		Tui();
 		void run() override;
 	private:
 		Ncurses m_ncurses;
+		Window m_inputFormulaWindow;
+		Window m_sheetWindow;
+		Window m_statusBarWindow;
 	};
 }
