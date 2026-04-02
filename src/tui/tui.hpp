@@ -4,6 +4,7 @@
 
 #include "../interface/ui.hpp"
 #include "window.hpp"
+#include "screenView.hpp"
 
 namespace tui
 {
@@ -15,6 +16,7 @@ namespace tui
 		void run() override;
 	private:
 		Ncurses m_ncurses;
+		ScreenView m_screenView;
 		Window m_inputFormulaWindow;
 		Window m_sheetWindow;
 		Window m_statusBarWindow;

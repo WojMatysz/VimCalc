@@ -11,3 +11,15 @@ Window::~Window()
 {
 	if(m_windowHandle) delwin(m_windowHandle);
 }
+
+void Window::setDimention(const Dimention dimention)
+{
+	wresize(m_windowHandle, dimention.height, dimention.width);
+	m_dimention = dimention;
+}
+
+void Window::setPosition(const Position position)
+{
+	mvwin(m_windowHandle, position.y, position.x);
+	m_position = position;
+}

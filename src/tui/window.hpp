@@ -13,7 +13,12 @@ namespace tui
 		~Window();
 	
 		Window(const Window &) = delete;
+		Window & operator=(const Window &) = delete;
+
 		WINDOW * getWindowHandle() { return m_windowHandle; }
+
+		void setDimention(const Dimention dimention);
+		void setPosition(const Position position);
 	private:
 		Position m_position;
 		Dimention m_dimention;
