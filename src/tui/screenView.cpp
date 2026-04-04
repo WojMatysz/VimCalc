@@ -14,10 +14,10 @@ WINDOW * ScreenView::get()
 
 void  ScreenView::updateSize() 
 { 
-	getmaxyx(m_window, m_dimention.height, m_dimention.width);
+	getmaxyx(m_window, m_dimension.height, m_dimension.width);
 }
 
-Dimention ScreenView::getDimention() 
+Dimension ScreenView::getDimension() 
 {
-	return m_dimention;
+	return m_dimension;
 }

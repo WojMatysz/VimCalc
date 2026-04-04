@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ncurses.hpp"
-#include "dimention.hpp"
+#include "dimension.hpp"
 
 namespace tui
 {
@@ -11,10 +11,10 @@ namespace tui
 		explicit ScreenView(WINDOW * window);
 		WINDOW * get();
 		void  updateSize();
-		Dimention getDimention();
+		Dimension getDimension();
 
 	private:
 		WINDOW * m_window;
-		Dimention m_dimention;
+		Dimension m_dimension;
 	};
 }

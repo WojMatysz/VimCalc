@@ -2,7 +2,7 @@
 
 namespace tui
 {
-	struct Dimention
+	struct Dimension
 	{
 		int width;
 		int height;

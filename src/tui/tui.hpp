@@ -5,6 +5,8 @@
 #include "../interface/ui.hpp"
 #include "window.hpp"
 #include "screenView.hpp"
+#include "windowManager.hpp"
+#include "renderer.hpp"
 
 namespace tui
 {
@@ -17,8 +19,7 @@ namespace tui
 	private:
 		Ncurses m_ncurses;
 		ScreenView m_screenView;
-		Window m_inputFormulaWindow;
-		Window m_sheetWindow;
-		Window m_statusBarWindow;
+		WindowManager m_windowManager;
+		Renderer m_renderer;
 	};
 }

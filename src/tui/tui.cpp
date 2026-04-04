@@ -2,43 +2,43 @@
 
 using namespace tui;
 
-Tui::Tui() : 
-	m_screenView(stdscr),
-	m_inputFormulaWindow(Position{0, 0}, Dimention{10, 2}),
-	m_sheetWindow(Position{0, 2}, Dimention{10, 20}),
-	m_statusBarWindow(Position{0, 22}, Dimention{10, 2})
+Tui::Tui() : m_screenView(stdscr), m_renderer(Renderer(m_windowManager))
 {
-	Dimention screenDimention = m_screenView.getDimention();
-	int inputWindowHeight = 2;
-	int statusBarWindowHeight = 2;
-	m_inputFormulaWindow.setDimention(Dimention{screenDimention.width, inputWindowHeight});
-	m_sheetWindow.setDimention({screenDimention.width, screenDimention.height - inputWindowHeight - statusBarWindowHeight});
-	m_statusBarWindow.setDimention(Dimention{screenDimention.width, statusBarWindowHeight});
-
-	m_statusBarWindow.setPosition(Position{0, screenDimention.height - statusBarWindowHeight});
 }
 
 void Tui::run()
 {
+	Window inputFormulaWindow{"InputWindow", Position{0, 0}, Dimension{10, 2}};
+	Window sheetWindow{"SheetWindow", Position{0, 2}, Dimension{10, 20}};
+	Window statusBarWindow{"StatusBarWindow", Position{0, 22}, Dimension{10, 1}};
+	Window commandBarWindow{"CommandBarWindow", Position{0, 23}, Dimension{10, 1}};
+
+	Dimension screenDimension = m_screenView.getDimension();
+	int inputWindowHeight = 2;
+	int statusBarWindowHeight = 1;
+	int commandBarWindowHeight = 1;
+
+	inputFormulaWindow.setDimension(Dimension{screenDimension.width, inputWindowHeight});
+
+	sheetWindow.setDimension({screenDimension.width, screenDimension.height - inputWindowHeight - statusBarWindowHeight});
+
+	statusBarWindow.setDimension(Dimension{screenDimension.width, statusBarWindowHeight});
+	statusBarWindow.setPosition(Position{0, screenDimension.height - statusBarWindowHeight - commandBarWindowHeight});
+
+	commandBarWindow.setDimension(Dimension{screenDimension.width, commandBarWindowHeight});
+	commandBarWindow.setPosition(Position{0, screenDimension.height - commandBarWindowHeight});
+
+	m_windowManager.addWindow(inputFormulaWindow);
+	m_windowManager.addWindow(sheetWindow);
+	m_windowManager.addWindow(statusBarWindow);
+	m_windowManager.addWindow(commandBarWindow);
 
 	while(true)
 	{
-		//rendering windows
-		wbkgd(m_inputFormulaWindow.getWindowHandle(), ' ' | COLOR_PAIR(1));
-		werase(m_inputFormulaWindow.getWindowHandle());
-
-		wbkgd(m_sheetWindow.getWindowHandle(), ' ' | COLOR_PAIR(2));
-		werase(m_sheetWindow.getWindowHandle());
-
-		wbkgd(m_statusBarWindow.getWindowHandle(), ' ' | COLOR_PAIR(3));
-		werase(m_statusBarWindow.getWindowHandle());
-
-		wrefresh(m_inputFormulaWindow.getWindowHandle());
-		wrefresh(m_sheetWindow.getWindowHandle());
-		wrefresh(m_statusBarWindow.getWindowHandle());
-
 		//geting input
 		int input = m_ncurses.getInput();
 		if(input == (int)('q')) break;
+
+		m_renderer.render();
 	}
 }
