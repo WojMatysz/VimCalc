@@ -1,12 +1,13 @@
 #pragma once
 
-#include <string>
+#include "cellValue.hpp"
+#include "format/format.hpp"
 
 namespace core
 {
 	struct Cell
 	{
-		int numericValue;
-		std::string stringValue;
+		CellValue value;
+		Format format;
 	};
 }
