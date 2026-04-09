@@ -1,13 +1,15 @@
 #pragma once
 
+#include <optional>
+
 #include "color.hpp"
 
 namespace core
 {
 	struct ColorFormat
 	{
-		Color background;
-		Color text;
-		Color highlight;
+		std::optional<Color> background;
+		std::optional<Color> text;
+		std::optional<Color> highlight;
 	};
 }

@@ -1,15 +1,17 @@
 #pragma once
 
+#include <optional>
+
 // #include "font.hpp"
 
 namespace core
 {
 	struct FontFormat
 	{
-		//Font font;
-		bool bold;
-		bool underline;
-		bool italic;
-		bool strikethrough;
+		//std::optional<Font> font;
+		std::optional<bool> bold;
+		std::optional<bool> underline;
+		std::optional<bool> italic;
+		std::optional<bool> strikethrough;
 	};
 }

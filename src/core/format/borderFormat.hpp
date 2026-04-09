@@ -1,12 +1,16 @@
 #pragma once
 
+#include <optional>
+
+#include "border.hpp"
+
 namespace core
 {
 	struct BorderFormat
 	{
-		bool top;
-		bool bottom;
-		bool left;
-		bool right;
+		std::optional<Border> top;
+		std::optional<Border> bottom;
+		std::optional<Border> left;
+		std::optional<Border> right;
 	};
 }

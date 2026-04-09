@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 namespace core
 {
 	enum class VerticalAlignment
@@ -18,7 +20,7 @@ namespace core
 
 	struct AlignmentFormat
 	{
-		VerticalAlignment vertical;
-		HorizontalAlignment horizontal;
+		std::optional<VerticalAlignment> vertical;
+		std::optional<HorizontalAlignment> horizontal;
 	};
 }
