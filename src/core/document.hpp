@@ -3,6 +3,7 @@
 #include <string>
 
 #include "sheet.hpp"
+#include "format/formatRegistry.hpp"
 
 namespace core
 {
@@ -13,5 +14,6 @@ namespace core
 	private:
 		std::string m_name;
 		Sheet m_sheet;
+		FormatRegistry m_formatRegistry;
 	};
 }

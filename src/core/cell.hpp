@@ -1,13 +1,15 @@
 #pragma once
 
+#include <optional>
+
 #include "cellValue.hpp"
-#include "format/format.hpp"
+#include "format/formatId.hpp"
 
 namespace core
 {
 	struct Cell
 	{
 		CellValue value;
-		Format format;
+		std::optional<FormatId> formatId;
 	};
 }
