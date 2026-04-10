@@ -33,6 +33,6 @@ void FormatRegistry::remove(const FormatId & id)
 	if(iterator != m_registry.end())
 	{
 		m_registry.erase(iterator);
-		m_freeIds.push_back(iterator->first);
+		m_freeIds.push_back(id);
 	}
 }
