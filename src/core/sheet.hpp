@@ -2,7 +2,7 @@
 
 #include <array>
 
-#include "cell.hpp"
+#include "sheetDataStorage.hpp"
 
 namespace core
 {
@@ -12,7 +12,8 @@ namespace core
 	public:
 		Sheet() {}
 	private:
-		std::array<std::array<Cell, 10>, 20> m_cells;
+		//std::array<std::array<Cell, 10>, 20> m_cells;
+		SheetDataStorage m_cells;
 
 	};
 }
