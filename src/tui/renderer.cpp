@@ -21,6 +21,11 @@ void Renderer::render() const
 	}
 }
 
+void Renderer::render(const CellData & data, const Position & cellPosition, const CellFormat & format) const
+{
+
+}
+
 
 /*
 //rendering windows

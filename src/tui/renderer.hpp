@@ -1,6 +1,8 @@
 #pragma once
 
 #include "windowManager.hpp"
+#include "format/cellFormat.hpp"
+#include "cellData.hpp"
 
 namespace tui
 {
@@ -11,6 +13,7 @@ namespace tui
 		void render() const;
 	private:
 		void render(const Window & window) const;
+		void render(const CellData & data, const Position & cellPosition, const CellFormat & format) const;
 
 		const WindowManager & m_windowManager;
 	};
