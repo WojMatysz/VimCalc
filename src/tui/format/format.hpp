@@ -1,3 +1,5 @@
+#pragma once
+
 #include "color.hpp"
 
 namespace tui

@@ -1,3 +1,5 @@
+#pragma once
+
 namespace tui
 {
 	struct Color

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "format.hpp"
 
 namespace tui

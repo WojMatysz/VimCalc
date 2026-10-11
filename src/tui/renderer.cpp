@@ -1,5 +1,9 @@
 #include "renderer.hpp"
 
+#include "format/bold.hpp"
+#include "format/italic.hpp"
+#include "format/underline.hpp"
+
 using namespace tui;
 
 Renderer::Renderer(const WindowManager & windowManager) : m_windowManager(windowManager)
@@ -19,11 +23,17 @@ void Renderer::render() const
 	{
 		render(window);
 	}
+	render(CellData("Hello"), Position(100, 10), CellFormat());
+	render(CellData("Hello"), Position(100, 12), CellFormat());
 }
 
 void Renderer::render(const CellData & data, const Position & cellPosition, const CellFormat & format) const
 {
-
+	Bold bold;
+	Italic italic;
+	Underline underline;
+	mvprintw(cellPosition.y, cellPosition.x, data.data.c_str());
+	refresh();
 }
 
 
