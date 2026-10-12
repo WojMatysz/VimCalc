@@ -3,6 +3,7 @@
 #include "windowManager.hpp"
 #include "format/cellFormat.hpp"
 #include "cellData.hpp"
+#include "dimension.hpp"
 
 namespace tui
 {
@@ -14,6 +15,8 @@ namespace tui
 	private:
 		void render(const Window & window) const;
 		void render(const CellData & data, const Position & cellPosition, const CellFormat & format) const;
+		void render(const Position & cellPosition, const Dimension & cellSize) const;
+		void render(const CellData & data, const Position & cellPosition, const int & width) const;
 
 		const WindowManager & m_windowManager;
 	};

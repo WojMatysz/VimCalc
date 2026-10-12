@@ -7,5 +7,7 @@ namespace tui
 	struct CellFormat
 		:public Format
 	{
+		int width;
+		int height;
 	};
 }

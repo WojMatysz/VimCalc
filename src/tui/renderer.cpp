@@ -23,17 +23,42 @@ void Renderer::render() const
 	{
 		render(window);
 	}
-	render(CellData("Hello"), Position(100, 10), CellFormat());
-	render(CellData("Hello"), Position(100, 12), CellFormat());
+	render(CellData("Hello"), Position(100, 10), CellFormat{.width = 10, .height = 3});
 }
 
 void Renderer::render(const CellData & data, const Position & cellPosition, const CellFormat & format) const
 {
-	Bold bold;
+	// Formanting
+	//Bold bold;
 	Italic italic;
-	Underline underline;
-	mvprintw(cellPosition.y, cellPosition.x, data.data.c_str());
+	//Underline underline;
+	
+	// Render border
+	render(cellPosition, Dimension{format.width, format.height});
+	
+	// Insert string to the cell
+	render(data, cellPosition, format.width);
+}
+
+void Renderer::render(const CellData & data, const Position & cellPosition, const int & width) const
+{
+	mvaddnstr(cellPosition.y + 1, cellPosition.x + 1, data.data.c_str(), width - 2);
 	refresh();
+}
+
+void Renderer::render(const Position & cellPosition, const Dimension & cellSize) const
+{
+	// Border's corners
+	mvaddch(cellPosition.y, cellPosition.x, '+');
+	mvaddch(cellPosition.y, cellPosition.x + cellSize.width - 1, '+');
+	mvaddch(cellPosition.y + cellSize.height - 1, cellPosition.x, '+');
+	mvaddch(cellPosition.y + cellSize.height - 1, cellPosition.x + cellSize.width - 1, '+');
+
+	// Border's edges
+	mvhline(cellPosition.y, cellPosition.x + 1, '-', cellSize.width - 2);
+	mvhline(cellPosition.y + cellSize.height - 1, cellPosition.x + 1, '-', cellSize.width - 2);
+	mvvline(cellPosition.y + 1, cellPosition.x, '|', cellSize.height - 2);
+	mvvline(cellPosition.y + 1, cellPosition.x + cellSize.width - 1, '|', cellSize.height - 2);
 }
 
 
