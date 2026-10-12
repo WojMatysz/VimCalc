@@ -1,6 +1,7 @@
 #pragma once
 
 #include "formatAttribute.hpp"
+#include "../ncurses.hpp"
 
 namespace tui
 {

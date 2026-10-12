@@ -6,7 +6,8 @@
 
 using namespace tui;
 
-Renderer::Renderer(const WindowManager & windowManager) : m_windowManager(windowManager)
+Renderer::Renderer(const WindowManager & windowManager, Formater & formater) 
+	: m_windowManager(windowManager), m_formater(formater)
 {
 }
 
@@ -23,18 +24,20 @@ void Renderer::render() const
 	{
 		render(window);
 	}
-	render(CellData("Hello"), Position(100, 10), CellFormat{.width = 10, .height = 3});
+	CellFormat format{.width = 10, .height = 3};
+	format.bold = true;
+	format.italic = true;
+	format.underline = true;
+	render(CellData("Hello"), Position(100, 10), format);
 }
 
 void Renderer::render(const CellData & data, const Position & cellPosition, const CellFormat & format) const
 {
-	// Formanting
-	//Bold bold;
-	Italic italic;
-	//Underline underline;
-	
 	// Render border
 	render(cellPosition, Dimension{format.width, format.height});
+	
+	// Formanting
+	const auto scopeAttributes = m_formater.apply(format);
 	
 	// Insert string to the cell
 	render(data, cellPosition, format.width);

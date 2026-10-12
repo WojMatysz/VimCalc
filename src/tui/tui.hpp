@@ -21,5 +21,6 @@ namespace tui
 		ScreenView m_screenView;
 		WindowManager m_windowManager;
 		Renderer m_renderer;
+		Formater m_formater;
 	};
 }

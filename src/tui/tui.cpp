@@ -2,7 +2,7 @@
 
 using namespace tui;
 
-Tui::Tui() : m_screenView(stdscr), m_renderer(Renderer(m_windowManager))
+Tui::Tui() : m_screenView(stdscr), m_renderer(Renderer(m_windowManager, m_formater))
 {
 }
 
