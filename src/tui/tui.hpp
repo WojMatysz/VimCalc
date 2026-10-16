@@ -7,6 +7,7 @@
 #include "screenView.hpp"
 #include "windowManager.hpp"
 #include "renderer.hpp"
+#include "uiElementManager.hpp"
 
 namespace tui
 {
@@ -22,5 +23,6 @@ namespace tui
 		WindowManager m_windowManager;
 		Renderer m_renderer;
 		Formater m_formater;
+		UiElementManager m_uiElementManager;
 	};
 }

@@ -6,23 +6,25 @@
 
 using namespace tui;
 
-Renderer::Renderer(const WindowManager & windowManager, Formater & formater) 
-	: m_windowManager(windowManager), m_formater(formater)
+Renderer::Renderer(const WindowManager & windowManager, Formater & formater, const UiElementManager & uiElementManager) 
+	: m_windowManager(windowManager), m_formater(formater), m_uiElementManager(uiElementManager)
 {
 }
 
-void Renderer::render(const Window & window) const
+void Renderer::render(const Window & window, int color) const
 {
-	wbkgd(window.getWindowHandle(), ' ' | COLOR_PAIR(1));
+	wbkgd(window.getWindowHandle(), ' ' | COLOR_PAIR(color));
 	werase(window.getWindowHandle());
 	wrefresh(window.getWindowHandle());
 }
 
 void Renderer::render() const
 {
+	int color = 1;
 	for(const auto & window : m_windowManager.getWindows())
 	{
-		render(window);
+		render(window, color % 5 + 1);
+		color++;
 	}
 	CellFormat format{.width = 10, .height = 3};
 	format.bold = true;
